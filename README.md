@@ -1,8 +1,8 @@
-# DimensionLock
+# Dimensional Lock
 
 A server-side NeoForge mod for Minecraft 1.21.1 that lets you lock any dimension (vanilla or modded) at runtime with a command. No config files or restarts needed.
 
-When the server starts, DimensionLock picks up every dimension that's loaded, including those added by other mods in your modpack. Ops can then lock or unlock them individually in-game.
+When the server starts, Dimensional Lock picks up every dimension that's loaded, including those added by other mods in your modpack. Ops can then lock or unlock them individually in-game.
 
 ## Commands
 
@@ -38,7 +38,7 @@ The overworld can't be locked, since it's where players get sent when they're re
 
 ## Persistence
 
-Locked dimensions are saved per world in `<world>/data/dimensionlock.dat`, so they stay locked across server restarts.
+Locked dimensions are saved per world in `<world>/data/dimensional_lock.dat`, so they stay locked across server restarts.
 
 ## Installation
 

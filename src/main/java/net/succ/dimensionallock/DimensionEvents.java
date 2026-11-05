@@ -1,4 +1,4 @@
-package net.succ.dimensionlock;
+package net.succ.dimensionallock;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -11,7 +11,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityTravelToDimensionEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
-@EventBusSubscriber(modid = Dimensionlock.MODID)
+@EventBusSubscriber(modid = DimensionalLock.MODID)
 public class DimensionEvents {
 
     // Covers portals, /tp, /execute in ... and most modded teleporters
@@ -44,7 +44,7 @@ public class DimensionEvents {
     }
 
     private static void evictIfLocked(ServerPlayer player) {
-        if (!Dimensionlock.canBeLocked(player.level().dimension())) return;
+        if (!DimensionalLock.canBeLocked(player.level().dimension())) return;
         if (LockedDimensions.get(player.server).isLocked(player.level().dimension().location())) {
             sendToOverworld(player);
         }

@@ -1,4 +1,4 @@
-package net.succ.dimensionlock;
+package net.succ.dimensionallock;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -14,10 +14,10 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- * The set of locked dimensions, saved with the world in data/dimensionlock.dat.
+ * The set of locked dimensions, saved with the world in data/dimensional_lock.dat.
  */
 public class LockedDimensions extends SavedData {
-    private static final String DATA_NAME = Dimensionlock.MODID;
+    private static final String DATA_NAME = DimensionalLock.MODID;
     private static final SavedData.Factory<LockedDimensions> FACTORY = new SavedData.Factory<>(LockedDimensions::new, LockedDimensions::load);
 
     private final Set<ResourceLocation> locked = new TreeSet<>();

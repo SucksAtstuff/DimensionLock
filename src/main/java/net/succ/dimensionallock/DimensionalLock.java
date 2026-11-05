@@ -1,4 +1,4 @@
-package net.succ.dimensionlock;
+package net.succ.dimensionallock;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceKey;
@@ -12,16 +12,16 @@ import org.slf4j.Logger;
 
 import java.util.stream.Collectors;
 
-@Mod(Dimensionlock.MODID)
-public class Dimensionlock {
-    public static final String MODID = "dimensionlock";
+@Mod(DimensionalLock.MODID)
+public class DimensionalLock {
+    public static final String MODID = "dimensional_lock";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     @EventBusSubscriber(modid = MODID)
     public static class ServerEvents {
         @SubscribeEvent
         public static void onRegisterCommands(RegisterCommandsEvent event) {
-            DimensionLockCommand.register(event.getDispatcher());
+            DimensionalLockCommand.register(event.getDispatcher());
         }
 
         // Log every dimension the server loaded (vanilla + modded) so admins know what can be locked

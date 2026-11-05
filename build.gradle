@@ -10,6 +10,13 @@ group = mod_group_id
 
 repositories {
     mavenLocal()
+    // Modrinth maven, only used for the dev-only test mods below
+    exclusiveContent {
+        forRepository {
+            maven { url = "https://api.modrinth.com/maven" }
+        }
+        filter { includeGroup "maven.modrinth" }
+    }
 }
 
 base {
@@ -95,7 +102,17 @@ neoForge {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 
+// Mods that are only loaded in dev runs for testing. Unlike runtimeOnly, these
+// never end up as dependencies in the published jar's metadata.
+configurations {
+    localRuntime
+    runtimeClasspath.extendsFrom localRuntime
+}
+
 dependencies {
+    // Dimension mods for testing locks on modded dimensions and portals
+    localRuntime "maven.modrinth:deeperdarker:TuD0Zvi3" // Deeper and Darker 1.4.1 (Otherside dimension)
+
     // Example mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"

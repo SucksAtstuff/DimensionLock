@@ -1,4 +1,4 @@
-package net.succ.dimensionlock;
+package net.succ.dimensionallock;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
@@ -22,17 +22,17 @@ import java.util.List;
  * /dimlock lock <dimension>
  * /dimlock unlock <dimension>
  */
-public class DimensionLockCommand {
+public class DimensionalLockCommand {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(Commands.literal("dimlock")
                 .requires(source -> source.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .then(Commands.literal("list").executes(DimensionLockCommand::list))
+                .then(Commands.literal("list").executes(DimensionalLockCommand::list))
                 .then(Commands.literal("lock")
                         .then(Commands.argument("dimension", DimensionArgument.dimension())
-                                .executes(DimensionLockCommand::lock)))
+                                .executes(DimensionalLockCommand::lock)))
                 .then(Commands.literal("unlock")
                         .then(Commands.argument("dimension", DimensionArgument.dimension())
-                                .executes(DimensionLockCommand::unlock))));
+                                .executes(DimensionalLockCommand::unlock))));
     }
 
     private static int list(CommandContext<CommandSourceStack> ctx) {
@@ -57,7 +57,7 @@ public class DimensionLockCommand {
         ServerLevel level = DimensionArgument.getDimension(ctx, "dimension");
         ResourceLocation id = level.dimension().location();
 
-        if (!Dimensionlock.canBeLocked(level.dimension())) {
+        if (!DimensionalLock.canBeLocked(level.dimension())) {
             ctx.getSource().sendFailure(Component.literal("The overworld can't be locked."));
             return 0;
         }
